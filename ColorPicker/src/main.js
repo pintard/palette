@@ -66,11 +66,11 @@ export default class ColorPicker {
     buildFields = parent => {
         const changeView = e => {
             const btns = Array.from(document.getElementsByClassName(CTRLS_CNAME))
-            const vws = Array.from(document.getElementsByClassName(FVIEW_CNAME))
+            const views = Array.from(document.getElementsByClassName(FVIEW_CNAME))
 
             btns.forEach((btn, i) => {
                 btn.style.background = btn === e.target ? CTRLS_BG : "none"
-                vws[i].style.display = btn === e.target ? CTRLS_DSP : "none"
+                views[i].style.display = btn === e.target ? CTRLS_DSP : "none"
             })
         }
 
