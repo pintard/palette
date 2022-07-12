@@ -1,7 +1,7 @@
 import { createElement as make, setElementStyles as update, rgbaToStr, rgbToStr } from '../../utils/utils.js'
 import { RGBtoHSV, HSVtoRGB } from '../../utils/conversions.js'
 import { eventType, tag } from '../../constants/enums.js'
-import { OUT_PANEL_ID, PANEL_ID, PANEL_DRGR_ID } from '../../constants/general_configs.js'
+import { OUT_PANEL_ID, PANEL_ID, PANEL_DRGR_ID } from '../../constants/attributes.js'
 
 const MAX_VAL = 255
 

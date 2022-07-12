@@ -1,7 +1,7 @@
 import { createElement as make, setElementStyles as update, rgbToStr } from '../../utils/utils.js'
 import { RGBtoHSV } from '../../utils/conversions.js'
 import { color, tag, eventType } from '../../constants/enums.js'
-import { OUT_SLIDER_ID, SLIDER_ID, SLIDER_DRGR_ID, SL_CONT_HT, SL_DRGR_HT } from '../../constants/general_configs.js'
+import { OUT_SLIDER_ID, SLIDER_ID, SLIDER_DRGR_ID, SL_CONT_HT, SL_DRGR_HT } from '../../constants/attributes.js'
 
 const HEIGHT_ADJ = 14
 const MAX_VAL = 255

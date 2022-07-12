@@ -1,0 +1,17 @@
+{
+  "name": "ColorPicker",
+  "version": "1.0.0",
+  "description": "This is an amateur color picker application build with vanilla js. It is built using a pure purpose-built javascript-to-html framework that constructs the UI HTMLElements from javascript client functions so that it can be inserted into any webpage ready to go.",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "build": "webpack"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "devDependencies": {
+    "webpack": "^5.73.0",
+    "webpack-cli": "^4.10.0"
+  }
+}

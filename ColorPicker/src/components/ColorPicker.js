@@ -1,10 +1,11 @@
-import { HEXField, RGBField, ColorLabel, ColorPanel, ColorSlider, ColorSwatch } from './components/index.js'
-import { createElement as make } from './utils/utils.js'
+import { HEXField, RGBField, ColorLabel, ColorPanel, ColorSlider, ColorSwatch } from './index.js'
+import { createElement as make } from '../utils/utils.js'
 import {
-    CTRLS_BG, CTRLS_DSP, SW_COUNT, SWS_ID, CTRLS_CNAME, FVIEW_CNAME, HEXVW_ID, RGBVW_ID, RGB_LBL, HEX_LBL, RGB_BTN_ID, HEX_BTN_ID,
-    R_FLD_ID, G_FLD_ID, B_FLD_ID, FLDS_ID, CTRLS_NAV_ID, HXFLD_ID, PCKR_ROW_1, PCKR_ROW_2, PCKR_ROW_3, PCKR_ROW_4
-} from './constants/general_configs.js'
-import { tag, eventType } from './constants/enums.js'
+    CTRLS_BG, CTRLS_DSP, SW_COUNT, SWS_ID, CTRLS_CNAME, FVIEW_CNAME, HEXVW_ID, RGBVW_ID, RGB_LBL, HEX_LBL,
+    RGB_BTN_ID, HEX_BTN_ID, R_FLD_ID, G_FLD_ID, B_FLD_ID, FLDS_ID, CTRLS_NAV_ID, HXFLD_ID, PCKR_ROW_1,
+    PCKR_ROW_2, PCKR_ROW_3, PCKR_ROW_4
+} from '../constants/attributes.js'
+import { tag, eventType } from '../constants/enums.js'
 
 const MAX_VAL = 255
 

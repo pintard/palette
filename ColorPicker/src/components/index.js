@@ -12,3 +12,5 @@ export {
     ColorSlider,
     ColorSwatch
 }
+
+export { default } from './ColorPicker.js'

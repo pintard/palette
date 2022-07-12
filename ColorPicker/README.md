@@ -4,4 +4,4 @@ This is an amateur color picker application build with vanilla js. It is built u
 
 ## Instructions
 
-Install and build this project by navigating to the `ColorPicker` root directory and executing the `npm init` and `npm build` commands
+Install and build this project by navigating to the `ColorPicker` root directory and executing the `npm install` and `npm build` commands

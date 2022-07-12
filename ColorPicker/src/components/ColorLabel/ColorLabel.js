@@ -4,7 +4,7 @@ import {
 } from '../../utils/utils.js'
 import { RGBtoHSV } from '../../utils/conversions.js'
 import { color, tag } from '../../constants/enums.js'
-import { LABEL_ID } from '../../constants/general_configs.js'
+import { LABEL_ID } from '../../constants/attributes.js'
 
 const { BLACK, WHITE } = color
 

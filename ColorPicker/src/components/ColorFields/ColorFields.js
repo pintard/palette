@@ -4,7 +4,7 @@ import { tag, eventType } from '../../constants/enums.js'
 import {
     B_FLD_ID, G_FLD_ID, HEXVW_ID, HEX_FLDS_CNAME,
     RGBVW_ID, RGB_FLDS_CNAME, R_FLD_ID
-} from '/ColorPicker/src/constants/general_configs.js'
+} from '../../constants/attributes.js'
 
 const indexMap = Object.freeze({ [R_FLD_ID]: 0, [G_FLD_ID]: 1, [B_FLD_ID]: 2 })
 

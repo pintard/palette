@@ -1,5 +1,5 @@
 import { createElement as make, rgbToStr } from '../../utils/utils.js'
-import { SW_BG, SW_BG_CNAME, SW_ID, SW_CLEAR_CNAME } from '../../constants/general_configs.js'
+import { SW_BG, SW_BG_CNAME, SW_ID, SW_CLEAR_CNAME } from '../../constants/attributes.js'
 import { tag } from '../../constants/enums.js'
 
 export default class ColorSwatch {
