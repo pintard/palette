@@ -3,6 +3,8 @@ export const PCKR_ROW_1 = "picker-row one"
 export const PCKR_ROW_2 = "picker-row two"
 export const PCKR_ROW_3 = "picker-row three"
 export const PCKR_ROW_4 = "picker-row four"
+/** Build color picker container */
+export const PCKR_ID = "color-picker-container"
 /** Build color picker fields */
 export const FLDS_ID = "color-field-container"
 export const CTRLS_NAV_ID = "control-button-nav"

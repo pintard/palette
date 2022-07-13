@@ -1,0 +1,25 @@
+#color-panel-container {
+    position: relative;
+}
+
+#color-panel-dragger {
+    width: 22px;
+    height: 22px;
+    border: 3px solid #20232A;
+    border-radius: 100%;
+    position: absolute;
+    z-index: 10;
+    -webkit-user-select: none;
+    -moz-user-select: none;
+    -ms-user-select: none;
+    user-select: none;
+    -webkit-user-drag: none;
+    -khtml-user-drag: none;
+    -moz-user-drag: none;
+    -o-user-drag: none;
+    cursor: pointer;
+}
+
+#color-panel-dragger.light {
+    border-color: #232323;
+}

@@ -13,4 +13,4 @@ export {
     ColorSwatch
 }
 
-export { default } from './ColorPicker.js'
+export { default } from './ColorPicker/index.js'

@@ -1,9 +1,8 @@
-import { createElement } from '../../utils/utils.js'
+import { createElement as make } from '../../utils/utils.js'
 import { RGBtoHEX, HEXtoRGB } from '../../utils/conversions.js'
 import { tag, eventType } from '../../constants/enums.js'
 import {
-    B_FLD_ID, G_FLD_ID, HEXVW_ID, HEX_FLDS_CNAME,
-    RGBVW_ID, RGB_FLDS_CNAME, R_FLD_ID
+    B_FLD_ID, G_FLD_ID, HEXVW_ID, HEX_FLDS_CNAME, HXFLD_ID, RGBVW_ID, RGB_FLDS_CNAME, R_FLD_ID
 } from '../../constants/attributes.js'
 
 const indexMap = Object.freeze({ [R_FLD_ID]: 0, [G_FLD_ID]: 1, [B_FLD_ID]: 2 })
@@ -22,13 +21,17 @@ export class RGBField {
         this.initialize()
     }
 
-    getValue = () => this.value
-
     setValue = value => {
         this.color[this.index] = value
         this.value = value
-        this.field.value = value
+        this.element.value = value
     }
+
+    getValue = () => this.value
+
+    setElement = element => this.element = element
+
+    getElement = () => this.element
 
     format = () => {
         const isNumber = e => e.target.value.length <= 2 && (e.keyCode >= 48 && e.keyCode <= 57)
@@ -37,7 +40,7 @@ export class RGBField {
 
         const blur = e => (e.target.value === '') ? e.target.value = 0 : 0
 
-        const field = createElement(tag.INPUT, RGBVW_ID, [
+        const field = make(tag.INPUT, RGBVW_ID, [
             { id: this.id },
             { className: RGB_FLDS_CNAME },
             { value: this.value },
@@ -47,7 +50,7 @@ export class RGBField {
             { onblur: e => blur(e) }
         ])
 
-        this.field = field
+        this.setElement(field)
     }
 
     initialize = () => document.addEventListener('colorchange', ({ detail: d }) =>
@@ -62,7 +65,7 @@ export class RGBField {
                 color: this.color,
                 changing: this.index,
                 type: eventType.RGB,
-                target: document.getElementById(this.id)
+                target: this.element
             }
         }))
     }
@@ -73,32 +76,35 @@ export class RGBField {
  * for interpreting hex values, and dispatching color state changes
  */
 export class HEXField {
-    constructor(id, color) {
-        this.id = id
+    constructor(color) {
         this.color = color
         this.format()
         this.initialize()
     }
 
-    getColor = () => this.color
-
     setColor = color => {
         this.color = color
-        this.field.value = RGBtoHEX(...this.color)
+        this.element.value = RGBtoHEX(...this.color)
     }
+
+    getColor = () => this.color
+
+    setElement = element => this.element = element
+
+    getElement = () => this.element
 
     format = () => {
         const isHEX = e => e.target.value.length <= 5 && /[0-9A-F]/i.test(String.fromCharCode(e.keyCode))
 
-        const field = createElement(tag.INPUT, HEXVW_ID, [
-            { id: this.id },
+        const field = make(tag.INPUT, HEXVW_ID, [
+            { id: HXFLD_ID },
             { className: HEX_FLDS_CNAME },
             { value: RGBtoHEX(...this.color) },
             { onkeypress: e => isHEX(e) },
             { onkeyup: e => this.dispatch(e) }
         ])
 
-        this.field = field
+        this.setElement(field)
     }
 
     initialize = () => document.addEventListener('colorchange', ({ detail: d }) =>
@@ -107,17 +113,20 @@ export class HEXField {
 
     dispatch = e => {
         const temp = this.color
+        let index = -1
 
         setTimeout(() => {
-            try { this.setColor(HEXtoRGB(e.target.value)) }
-            catch (error) { console.warn('ERROR: Incomplete Hex') }
+            try {
+                this.setColor(HEXtoRGB(e.target.value))
+                index = temp.findIndex((val, i) => val !== this.color[i])
+            } catch (error) { console.warn('ERROR: Incomplete Hex') }
 
             document.dispatchEvent(new CustomEvent('colorchange', {
                 detail: {
                     color: this.color,
-                    changing: temp.findIndex((val, i) => val !== this.color[i]),
+                    changing: index,
                     type: eventType.HEX,
-                    target: document.getElementById(this.id)
+                    target: this.element
                 }
             }))
         }, 100)

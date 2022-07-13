@@ -13,20 +13,24 @@ export default class ColorPanel {
         this.initialize()
     }
 
-    getColor = () => this.color
-
     setColor = color => {
         this.fillPanel(color)
         this.color = color
         this.moveTo(...this.getCoords(), true)
     }
 
-    getHueColor = () => this.hueColor
+    getColor = () => this.color
+
+    setElement = element => this.element = element
+
+    getElement = () => this.element
 
     setHueColor = color => {
         const hue = RGBtoHSV(...color)[0]
         this.hueColor = HSVtoRGB(hue, 1, 1)
     }
+
+    getHueColor = () => this.hueColor
 
     getCoords = () => {
         const [, sat, val] = RGBtoHSV(...this.color)
@@ -37,13 +41,13 @@ export default class ColorPanel {
 
     format = () => {
         /** Builds color panel */
-        this.container = make(tag.DIV, this.parent, [{ id: OUT_PANEL_ID }], { width: '100%' })
-        this.width = parseInt(window.getComputedStyle(this.container).width)
+        const container = make(tag.DIV, this.parent, [{ id: OUT_PANEL_ID }], { width: '100%' })
+        this.width = parseInt(window.getComputedStyle(container).width)
         this.height = Math.round(this.width / 2)
-        update(this.container, { height: this.height + 'px' })
+        update(container, { height: this.height + 'px' })
 
         /** Builds canvas in color panel */
-        this.canvas = make(tag.CANVAS, this.container, [
+        this.canvas = make(tag.CANVAS, container, [
             { id: PANEL_ID },
             { width: this.width },
             { height: this.height }
@@ -52,8 +56,10 @@ export default class ColorPanel {
         this.fillPanel(this.color)
 
         /** Builds dragger */
-        this.dragger = make(tag.SPAN, this.container, [{ id: PANEL_DRGR_ID }])
+        this.dragger = make(tag.SPAN, container, [{ id: PANEL_DRGR_ID }])
         this.moveTo(...this.getCoords(), true)
+
+        this.setElement(container)
         this.down()
     }
 
@@ -70,7 +76,11 @@ export default class ColorPanel {
     })
 
     dispatch = () => document.dispatchEvent(new CustomEvent('colorchange', {
-        detail: { color: this.color, type: eventType.PANEL }
+        detail: {
+            color: this.color,
+            type: eventType.PANEL,
+            target: this.element
+        }
     }))
 
     fillPanel = color => {
@@ -114,19 +124,19 @@ export default class ColorPanel {
     }
 
     leave = container => {
-        this.container.onmouseleave = () => document.body.onmousemove = e => {
+        this.element.onmouseleave = () => document.body.onmousemove = e => {
             const x = e.clientX - container.left, y = e.clientY - container.top
             if (x >= 0 && x < this.width) this.moveTo(x, y >= this.height ? this.height - 1 : 0)
             else if (y >= 0 && y < this.height) this.moveTo(x >= this.width ? this.width - 1 : 0, y)
         }
-        this.container.onmouseenter = () => this.move(container)
+        this.element.onmouseenter = () => this.move(container)
     }
 
     release = () => document.body.onmouseup = () => {
         document.body.onmousemove = null
         document.body.onmouseup = null
-        this.container.onmouseleave = null
-        this.container.onmouseenter = null
+        this.element.onmouseleave = null
+        this.element.onmouseenter = null
         this.report()
     }
 

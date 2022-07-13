@@ -6,6 +6,15 @@ export const eventType = Object.freeze({
     RGB: 4
 })
 
+export const destinations = [
+    'ColorPicker',
+    'ColorSlider',
+    'ColorPanel',
+    'ColorFields',
+    'ColorLabel',
+    'ColorSwatch'
+]
+
 export const tag = Object.freeze({
     ANCHOR: "a",
     BODY: "body",
@@ -18,8 +27,10 @@ export const tag = Object.freeze({
     HEAD: "head",
     HTML: "html",
     INPUT: "input",
+    LINK: "link",
     PARA: "p",
     SPAN: "span",
+    STYLE: "style",
     TITLE: "title",
 })
 

@@ -14,27 +14,32 @@ export default class ColorSlider {
         this.initialize()
     }
 
-    getColor = () => this.color
-
     setColor = color => {
         this.color = color
         this.moveTo(this.getCoord(), true)
     }
+
+    getColor = () => this.color
+
+    setElement = element => this.element = element
+
+    getElement = () => this.element
 
     getCoord = () => Math.round((RGBtoHSV(...this.color)[0] / 360) * (this.width - 1))
 
     format = () => {
         /** Builds color slider */
         const containerHeight = SL_CONT_HT + HEIGHT_ADJ + 'px'
-        this.container = make(tag.DIV, this.parent,
+
+        const container = make(tag.DIV, this.parent,
             [{ id: OUT_SLIDER_ID }],
             { width: '100%', height: containerHeight }
         )
-        this.width = parseInt(window.getComputedStyle(this.container).width)
+        this.width = parseInt(window.getComputedStyle(container).width)
         this.height = SL_CONT_HT
 
         /** Builds canvas in slider */
-        this.canvas = make(tag.CANVAS, this.container, [
+        this.canvas = make(tag.CANVAS, container, [
             { id: SLIDER_ID },
             { width: this.width },
             { height: this.height }
@@ -43,21 +48,26 @@ export default class ColorSlider {
         this.fillSlider()
 
         /** Builds dragger */
-        this.dragger = make(tag.SPAN, this.container,
+        this.dragger = make(tag.SPAN, container,
             [{ id: SLIDER_DRGR_ID }],
             { width: SL_DRGR_HT, height: containerHeight }
         )
         this.moveTo(this.getCoord(), true)
+
+        this.setElement(container)
         this.down()
     }
 
-    initialize = () => document.addEventListener('colorchange', ({ detail: d }) => {
-        if ([eventType.RGB, eventType.HEX, eventType.PICKER].some(e => d.type === e))
-            this.setColor(d.color)
-    })
+    initialize = () => document.addEventListener('colorchange', ({ detail: d }) =>
+        [eventType.RGB, eventType.HEX, eventType.PICKER].some(e => d.type === e) &&
+        this.setColor(d.color))
 
     dispatch = () => document.dispatchEvent(new CustomEvent('colorchange', {
-        detail: { color: this.color, type: eventType.SLIDER }
+        detail: {
+            color: this.color,
+            type: eventType.SLIDER,
+            target: this.element
+        }
     }))
 
     fillSlider = () => {

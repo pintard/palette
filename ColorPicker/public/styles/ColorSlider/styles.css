@@ -1,0 +1,25 @@
+#color-slider-container {
+    display: grid;
+    align-content: center;
+    position: relative;
+}
+
+#color-slider {
+    border-radius: 3px;
+}
+
+#color-slider-dragger {
+    border: 2px solid #20232A;
+    border-radius: 4px;
+    position: absolute;
+    z-index: 10;
+    -webkit-user-select: none;
+    -moz-user-select: none;
+    -ms-user-select: none;
+    user-select: none;
+    -webkit-user-drag: none;
+    -khtml-user-drag: none;
+    -moz-user-drag: none;
+    -o-user-drag: none;
+    cursor: pointer;
+}

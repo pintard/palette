@@ -1,0 +1,17 @@
+#color-picker-container {
+    width: 100%;
+    position: relative;
+    background: #20232A;
+    display: grid;
+    row-gap: 14px;
+    padding: 18px;
+}
+
+.picker-row {
+    width: 100%;
+    display: flex;
+}
+
+.picker-row.one {
+    justify-content: space-between;
+}

@@ -16,34 +16,42 @@ export default class ColorLabel {
         this.initialize()
     }
 
-    getColor = () => this.color
-
     setColor = color => {
         this.color = color
         this.updateLabel(color)
     }
 
+    getColor = () => this.color
+
+    setElement = element => this.element = element
+
+    getElement = () => this.element
+
     format = () => {
-        this.container = make(tag.SPAN, this.parent,
+        /** Builds color label container */
+        const container = make(tag.SPAN, this.parent,
             [{ id: LABEL_ID },
             { onclick: () => navigator.clipboard.writeText(rgbToHexStr(this.color)) }],
             { height: '100%' }
         )
-        update(this.container, { width: window.getComputedStyle(this.container).height })
-        this.rgbText = make(tag.SPAN, this.container)
-        this.hexText = make(tag.SPAN, this.container)
+        update(container, { width: window.getComputedStyle(container).height })
+
+        /** Builds color label texts */
+        this.rgbText = make(tag.SPAN, container)
+        this.hexText = make(tag.SPAN, container)
+
+        this.setElement(container)
         this.setColor(this.color)
     }
 
-    initialize = () => document.addEventListener('colorchange', ({ detail: d }) =>
-        this.setColor(d.color))
+    initialize = () => document.addEventListener('colorchange', ({ detail: d }) => this.setColor(d.color))
 
     updateLabel = color => {
         const updateTextColor = color => {
             const [, sat, val] = RGBtoHSV(...color)
             return (sat <= 0.25 && val >= 0.7) ? BLACK : WHITE
         }
-        update(this.container, { background: rgbToStr(color) })
+        update(this.element, { background: rgbToStr(color) })
         update(this.rgbText, { color: updateTextColor(color) })
         update(this.hexText, { color: updateTextColor(color) })
         modify(this.rgbText, [{ innerHTML: rgbToStr(color) }])

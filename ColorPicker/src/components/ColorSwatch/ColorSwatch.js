@@ -1,6 +1,6 @@
 import { createElement as make, rgbToStr } from '../../utils/utils.js'
 import { SW_BG, SW_BG_CNAME, SW_ID, SW_CLEAR_CNAME } from '../../constants/attributes.js'
-import { tag } from '../../constants/enums.js'
+import { eventType, tag } from '../../constants/enums.js'
 
 export default class ColorSwatch {
     constructor(parent, color) {
@@ -14,10 +14,15 @@ export default class ColorSwatch {
 
     getColor = () => this.color
 
+    setElement = element => this.element = element
+
+    getElement = () => this.element
+
     format = () => {
         const clear = () => {
             swatchBg.style.background = SW_BG
             clearBtn.classList.remove('show')
+            swatchBg.classList.add('show')
         }
 
         const enter = () => swatchBg.style.background !== SW_BG ?
@@ -31,6 +36,7 @@ export default class ColorSwatch {
         const down = () => {
             swatchBg.style.background = rgbToStr(this.color)
             swatchBg.classList.remove('show')
+            clearBtn.classList.add('show')
         }
 
         const container = make(tag.DIV, this.parent, [
@@ -49,7 +55,11 @@ export default class ColorSwatch {
             { className: SW_CLEAR_CNAME },
             { onclick: () => clear() }
         ])
+
+        this.setElement(container)
     }
 
-    initialize = () => document.addEventListener('colorchange', ({ detail: d }) => this.setColor(d.color))
+    initialize = () => document.addEventListener('colorchange', ({ detail: d }) =>
+        [eventType.PANEL, eventType.RGB, eventType.HEX, eventType.PICKER].some(e => d.type === e) &&
+        this.setColor(d.color))
 }

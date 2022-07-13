@@ -1,0 +1,30 @@
+#color-label {
+    border-radius: 8px;
+    z-index: 12;
+    color: #FFFFFF;
+    display: flex;
+    flex-direction: column;
+    font-size: 14px;
+    text-align: center;
+    position: relative;
+    cursor: pointer;
+}
+
+#color-label span {
+    width: 100%;
+    position: absolute;
+    -webkit-user-select: none;
+    -moz-user-select: none;
+    -ms-user-select: none;
+    user-select: none;
+}
+
+#color-label span:nth-child(1) {
+    font-size: 11px;
+    top: 30%;
+}
+
+#color-label span:nth-child(2) {
+    font-size: 16px;
+    top: 50%;
+}
