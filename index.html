@@ -5,23 +5,17 @@
     <!-- Device metadata -->
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-
-    <!-- Search engine metadata -->
-    <meta name="description" content="pixel cursor paint application" />
-    <meta name="keywords" content="pixel cursor paint application" />
-    <meta name="robots" content="index, follow" />
-
     <!-- Page stylesheets -->
     <link rel="stylesheet" type="text/css" href="styles.css" />
-
     <title>Palette</title>
 </head>
 
 <body>
     <div id="color-picker-area"></div>
     <script type="module">
-        import ColorPicker from './ColorPicker/src/index.js'
-        new ColorPicker("color-picker-area", [150, 80, 80])
+        // import ColorPicker from './ColorPicker/src/index.js'
+        import ColorPicker from './ColorPicker/dist/index.js'
+        new ColorPicker('color-picker-area', [150, 80, 80])
     </script>
 </body>
 
