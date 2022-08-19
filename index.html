@@ -13,9 +13,10 @@
 <body>
     <div id="color-picker-area"></div>
     <script type="module">
-        // import ColorPicker from './ColorPicker/src/index.js'
-        import ColorPicker from './ColorPicker/dist/index.js'
+        import * as ColorPicker from './ColorPicker/dist/index.js'
         new ColorPicker('color-picker-area', [150, 80, 80])
+
+        // import('./ColorPicker/dist/main.js').then(e => console.log())
     </script>
 </body>
 

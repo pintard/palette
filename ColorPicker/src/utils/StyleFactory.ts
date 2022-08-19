@@ -18,14 +18,16 @@ export default class StyleFactory {
     static setUp = async (procedure: { format: () => void, init: () => void }): Promise<void> => {
         const style: HTMLStyleElement = document.createElement(Tag.STYLE)
         document.head.appendChild(style)
+
         await Promise.all(destinations.map((destination: string) =>
             this.addStyle(destination, <CSSStyleSheet>style.sheet)))
+        
         procedure.format()
         procedure.init()
     }
 
-    static addStyle = async (directory: string, sheet: CSSStyleSheet) => {
-        const url = `/ColorPicker/public/styles/${directory}/styles.css`
+    static addStyle = async (directory: string, sheet: CSSStyleSheet): Promise<void> => {
+        const url: string = `/ColorPicker/styles/${directory}/styles.css`
         try {
             const response: Response = await fetch(url)
             const css: string = await response.text()
