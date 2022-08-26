@@ -5,11 +5,12 @@ import {
     RGB_BTN_ID, HEX_BTN_ID, R_FLD_ID, G_FLD_ID, B_FLD_ID, FLDS_ID, CTRLS_NAV_ID, PCKR_ROW_1,
     PCKR_ROW_2, PCKR_ROW_3, PCKR_ROW_4, PCKR_ID
 } from '../../constants/attributes'
-import { Tag, EventType } from '../../constants/enums'
+import { Tag, EventType, destinations } from '../../constants/enums'
 import StyleFactory from '../../utils/StyleFactory'
 import { Color, ColorEvent } from '../../types/framework'
 
 const MAX_VAL: number = 255
+const DIRECTORY_SRC: string = '/ColorPicker/styles/'
 
 export default class ColorPicker {
     private parent: HTMLElement
@@ -39,7 +40,10 @@ export default class ColorPicker {
 
     getElement = (): HTMLDivElement => this.element
 
-    setUp = (): Promise<void> => StyleFactory.setUp({ format: this.format, init: this.initialize })
+    setUp = (): Promise<void> => {
+        const styleDestinations: string[] = destinations.map(destination => DIRECTORY_SRC + destination)
+        return StyleFactory.setUp(styleDestinations, { format: this.format, init: this.initialize })
+    }
 
     format = (): void => {
         const container = <HTMLDivElement>make(Tag.DIV, this.parent, [{ id: PCKR_ID }])
