@@ -7,12 +7,12 @@ import {
 } from '../../constants/attributes'
 import { Tag, EventType, destinations } from '../../constants/enums'
 import StyleFactory from '../../utils/StyleFactory'
-import { Color, ColorEvent } from '../../types/framework'
+import { Color, ColorEvent, Component } from '../../types/framework'
 
 const MAX_VAL: number = 255
 const DIRECTORY_SRC: string = '/ColorPicker/styles/'
 
-export default class ColorPicker {
+export default class ColorPicker implements Component {
     private parent: HTMLElement
     private color: Color
     private element: HTMLDivElement

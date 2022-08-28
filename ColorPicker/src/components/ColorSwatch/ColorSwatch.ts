@@ -1,9 +1,9 @@
 import { createElement as make, rgbToStr } from '../../utils/utils'
 import { SW_BG, SW_BG_CNAME, SW_ID, SW_CLEAR_CNAME } from '../../constants/attributes'
 import { EventType, Tag } from '../../constants/enums'
-import { Color, ColorEvent } from '../../types/framework'
+import { Color, ColorEvent, Component } from '../../types/framework'
 
-export default class ColorSwatch {
+export default class ColorSwatch implements Component {
     public parent: HTMLElement
     public color: Color
     public element: HTMLDivElement
@@ -31,7 +31,9 @@ export default class ColorSwatch {
         }
 
         const enter = (): void => {
-            swatchBg.style.background !== SW_BG ? clearBtn.classList.add('show') : swatchBg.classList.add('show')
+            swatchBg.style.background !== SW_BG ?
+                clearBtn.classList.add('show') :
+                swatchBg.classList.add('show')
         }
 
         const leave = (): void => {

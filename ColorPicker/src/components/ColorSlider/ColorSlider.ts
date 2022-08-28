@@ -2,12 +2,12 @@ import { createElement as make, setElementStyles as update, rgbToStr } from '../
 import { RGBtoHSV } from '../../utils/conversions'
 import { Colors, Tag, EventType } from '../../constants/enums'
 import { OUT_SLIDER_ID, SLIDER_ID, SLIDER_DRGR_ID, SL_CONT_HT, SL_DRGR_HT } from '../../constants/attributes'
-import { Color, ColorEvent, Coord } from '../../types/framework'
+import { Color, ColorEvent, Component, Coord } from '../../types/framework'
 
 const HEIGHT_ADJ: number = 14
 const MAX_VAL: number = 255
 
-export default class ColorSlider {
+export default class ColorSlider implements Component {
     private parent: HTMLElement
     private color: Color
     private element: HTMLDivElement

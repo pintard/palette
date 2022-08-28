@@ -5,11 +5,11 @@ import {
 import { RGBtoHSV } from '../../utils/conversions'
 import { Colors, Tag } from '../../constants/enums'
 import { LABEL_ID } from '../../constants/attributes'
-import { Color, ColorEvent } from '../../types/framework'
+import { Color, ColorEvent, Component } from '../../types/framework'
 
 const { BLACK, WHITE } = Colors
 
-export default class ColorLabel {
+export default class ColorLabel implements Component {
     private parent: HTMLElement
     private color: Color
     private element: HTMLSpanElement

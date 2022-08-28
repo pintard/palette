@@ -2,11 +2,11 @@ import { createElement as make, setElementStyles as update, rgbaToStr, rgbToStr 
 import { RGBtoHSV, HSVtoRGB } from '../../utils/conversions'
 import { EventType, Tag } from '../../constants/enums'
 import { OUT_PANEL_ID, PANEL_ID, PANEL_DRGR_ID } from '../../constants/attributes'
-import { Color, ColorEvent, Coords } from '../../types/framework'
+import { Color, ColorEvent, Component, Coords } from '../../types/framework'
 
 const MAX_VAL: number = 255
 
-export default class ColorPanel {
+export default class ColorPanel implements Component {
     private parent: HTMLElement
     private color: Color
     private element: HTMLDivElement
