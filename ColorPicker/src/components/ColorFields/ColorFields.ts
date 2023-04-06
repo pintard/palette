@@ -5,6 +5,7 @@ import {
     B_FLD_ID, G_FLD_ID, HEXVW_ID, HEX_FLDS_CNAME, HXFLD_ID, RGBVW_ID, RGB_FLDS_CNAME, R_FLD_ID
 } from '../../constants/attributes'
 import { Color, ColorEvent } from '../../types/framework'
+import { ColorComponent } from '../ColorComponent'
 
 interface IndexMap { [key: string]: number }
 
@@ -14,7 +15,7 @@ const indexMap: IndexMap = Object.freeze({ [R_FLD_ID]: 0, [G_FLD_ID]: 1, [B_FLD_
  * RGB Field Class
  * for interpreting r, g, b values, and dispatching color state changes
  */
-export class RGBField {
+export class RGBField implements ColorComponent {
     private id: string
     private color: Color
     public index: number
@@ -94,7 +95,7 @@ export class RGBField {
  * HEX Field Class
  * for interpreting hex values, and dispatching color state changes
  */
-export class HEXField {
+export class HEXField implements ColorComponent {
     private color: Color
     private element: HTMLInputElement
 

@@ -2,6 +2,7 @@
   "name": "colorpicker",
   "version": "1.0.0",
   "description": "",
+  "author": "Donovan Pintard",
   "main": "main.js",
   "scripts": {
     "build": "webpack --mode development",
@@ -14,7 +15,6 @@
     "colorpicker",
     "typescript"
   ],
-  "author": "Donovan Pintard",
   "repository": {
     "type": "git",
     "url": "https://github.com/pintard/palette.git"

@@ -3,10 +3,11 @@ import { RGBtoHSV, HSVtoRGB } from '../../utils/conversions'
 import { EventType, Tag } from '../../constants/enums'
 import { OUT_PANEL_ID, PANEL_ID, PANEL_DRGR_ID } from '../../constants/attributes'
 import { Color, ColorEvent, Coords } from '../../types/framework'
+import { ColorComponent } from '../ColorComponent'
 
 const MAX_VAL: number = 255
 
-export default class ColorPanel {
+export default class ColorPanel implements ColorComponent {
     private parent: HTMLElement
     private color: Color
     private element: HTMLDivElement

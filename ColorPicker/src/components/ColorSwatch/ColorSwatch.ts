@@ -2,8 +2,9 @@ import { createElement as make, rgbToStr } from '../../utils/utils'
 import { SW_BG, SW_BG_CNAME, SW_ID, SW_CLEAR_CNAME } from '../../constants/attributes'
 import { EventType, Tag } from '../../constants/enums'
 import { Color, ColorEvent } from '../../types/framework'
+import { ColorComponent } from '../ColorComponent'
 
-export default class ColorSwatch {
+export default class ColorSwatch implements ColorComponent {
     public parent: HTMLElement
     public color: Color
     public element: HTMLDivElement

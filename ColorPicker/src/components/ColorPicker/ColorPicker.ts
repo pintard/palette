@@ -8,10 +8,11 @@ import {
 import { Tag, EventType } from '../../constants/enums'
 import StyleFactory from '../../utils/StyleFactory'
 import { Color, ColorEvent } from '../../types/framework'
+import { ColorComponent } from '../ColorComponent'
 
 const MAX_VAL: number = 255
 
-export default class ColorPicker {
+export default class ColorPicker implements ColorComponent {
     private parent: HTMLElement
     private color: Color
     private element: HTMLDivElement
