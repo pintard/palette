@@ -1,5 +1,10 @@
 import { EventType } from "../constants/enums"
 
+export interface Component {
+    format(): void
+    initialize(): void
+}
+
 export type Color = [number, number, number]
 
 export type Coords = [number, number]

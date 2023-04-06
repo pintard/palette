@@ -1,4 +1,4 @@
-import { destinations, Tag } from "../constants/enums"
+import { Tag } from "../constants/enums"
 
 String.prototype.splitCSS = function (): string[] {
     // TODO Handle media queries
@@ -15,7 +15,7 @@ String.prototype.splitCSS = function (): string[] {
 }
 
 export default class StyleFactory {
-    static setUp = async (procedure: { format: () => void, init: () => void }): Promise<void> => {
+    static setUp = async (destinations: string[], procedure: { format: () => void, init: () => void }): Promise<void> => {
         const style: HTMLStyleElement = document.createElement(Tag.STYLE)
         document.head.appendChild(style)
 
@@ -27,7 +27,7 @@ export default class StyleFactory {
     }
 
     static addStyle = async (directory: string, sheet: CSSStyleSheet): Promise<void> => {
-        const url: string = `/ColorPicker/styles/${directory}/styles.css`
+        const url: string = `${directory}/styles.css`
         try {
             const response: Response = await fetch(url)
             const css: string = await response.text()

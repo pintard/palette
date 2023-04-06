@@ -32,7 +32,9 @@ export default class ColorSwatch implements ColorComponent {
         }
 
         const enter = (): void => {
-            swatchBg.style.background !== SW_BG ? clearBtn.classList.add('show') : swatchBg.classList.add('show')
+            swatchBg.style.background !== SW_BG ?
+                clearBtn.classList.add('show') :
+                swatchBg.classList.add('show')
         }
 
         const leave = (): void => {
