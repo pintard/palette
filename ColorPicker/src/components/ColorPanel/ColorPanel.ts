@@ -1,4 +1,4 @@
-import { createElement as make, setElementStyles as update, rgbaToStr, rgbToStr } from '../../utils/utils'
+import { createElement as make, setElementStyles as update, rgbaToStr, rgbToStr } from '../../utils/helper'
 import { RGBtoHSV, HSVtoRGB } from '../../utils/conversions'
 import { EventType, Tag } from '../../constants/enums'
 import { OUT_PANEL_ID, PANEL_ID, PANEL_DRGR_ID } from '../../constants/attributes'

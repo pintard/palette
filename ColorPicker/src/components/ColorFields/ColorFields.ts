@@ -1,4 +1,4 @@
-import { createElement as make } from '../../utils/utils'
+import { createElement as make } from '../../utils/helper'
 import { RGBtoHEX, HEXtoRGB } from '../../utils/conversions'
 import { Tag, EventType } from '../../constants/enums'
 import {

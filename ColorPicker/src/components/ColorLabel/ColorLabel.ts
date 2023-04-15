@@ -1,7 +1,7 @@
 import {
     createElement as make, setElementStyles as update, setElementProps as modify,
     rgbToHexStr, rgbToStr
-} from '../../utils/utils'
+} from '../../utils/helper'
 import { RGBtoHSV } from '../../utils/conversions'
 import { Colors, Tag } from '../../constants/enums'
 import { LABEL_ID } from '../../constants/attributes'

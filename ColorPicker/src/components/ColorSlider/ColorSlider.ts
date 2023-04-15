@@ -1,4 +1,4 @@
-import { createElement as make, setElementStyles as update, rgbToStr } from '../../utils/utils'
+import { createElement as make, setElementStyles as update, rgbToStr } from '../../utils/helper'
 import { RGBtoHSV } from '../../utils/conversions'
 import { Colors, Tag, EventType } from '../../constants/enums'
 import { OUT_SLIDER_ID, SLIDER_ID, SLIDER_DRGR_ID, SL_CONT_HT, SL_DRGR_HT } from '../../constants/attributes'
